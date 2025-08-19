@@ -32,5 +32,182 @@
       "Press new wheel kit in place",
       "Slide rack in and test movement"
     ]
+  },
+  {
+    "part_id": "PS1172212",
+    "title": "Water Filter EDR1RXD1 (Filter 1)",
+    "category": "Refrigerator",
+    "brand": "Whirlpool",
+    "price": 49.95,
+    "image_url": "https://via.placeholder.com/240x180?text=Water+Filter",
+    "part_select_url": "https://www.partselect.com/PS1172212",
+    "compatible_models": ["WRX735SDBM00", "WRS588FIHZ00", "KFFS20EYMS00"],
+    "install_steps": [
+      "Turn off ice maker",
+      "Open filter door and rotate old filter counter-clockwise",
+      "Insert new filter and rotate to lock",
+      "Run 3–4 gallons of water to purge air"
+    ]
+  },
+  {
+    "part_id": "PS869316",
+    "title": "Ice Maker Assembly",
+    "category": "Refrigerator",
+    "brand": "Whirlpool",
+    "price": 139.00,
+    "image_url": "https://via.placeholder.com/240x180?text=Ice+Maker",
+    "part_select_url": "https://www.partselect.com/PS869316",
+    "compatible_models": ["ED5FHEXVB00", "WRS325SDHZ08", "GS6SHAXMS00"],
+    "install_steps": [
+      "Unplug refrigerator",
+      "Remove ice bin",
+      "Unscrew and disconnect wire harness",
+      "Install new ice maker, reconnect harness",
+      "Restore power and allow 24 hours for ice production"
+    ]
+  },
+  {
+    "part_id": "PS303781",
+    "title": "Defrost Heater & Thermostat Kit",
+    "category": "Refrigerator",
+    "brand": "GE",
+    "price": 64.50,
+    "image_url": "https://via.placeholder.com/240x180?text=Defrost+Heater",
+    "part_select_url": "https://www.partselect.com/PS303781",
+    "compatible_models": ["GSH25JSTASS", "GSE25HSHHSS"],
+    "install_steps": [
+      "Disconnect power",
+      "Remove freezer rear panel",
+      "Unclip old heater and thermostat",
+      "Install new parts and reconnect wires",
+      "Reinstall panel and restore power"
+    ]
+  },
+  {
+    "part_id": "PS11740359",
+    "title": "Evaporator Fan Motor",
+    "category": "Refrigerator",
+    "brand": "Frigidaire",
+    "price": 79.99,
+    "image_url": "https://via.placeholder.com/240x180?text=Evap+Fan+Motor",
+    "part_select_url": "https://www.partselect.com/PS11740359",
+    "compatible_models": ["FFHS2611LBRA", "FGHC2331PFCA"],
+    "install_steps": [
+      "Unplug unit",
+      "Remove freezer shelves and back panel",
+      "Disconnect motor harness and fan blade",
+      "Install new motor, transfer fan blade",
+      "Reassemble and test airflow"
+    ]
+  },
+  {
+    "part_id": "PS12389102",
+    "title": "Door Bin (Gallon)",
+    "category": "Refrigerator",
+    "brand": "Samsung",
+    "price": 39.95,
+    "image_url": "https://via.placeholder.com/240x180?text=Door+Bin",
+    "part_select_url": "https://www.partselect.com/PS12389102",
+    "compatible_models": ["RF28HMEDBSR", "RF23J9011SR"],
+    "install_steps": [
+      "Remove broken bin",
+      "Align tabs with door slots",
+      "Press firmly until it clicks"
+    ]
+  },
+  {
+    "part_id": "PS8729445",
+    "title": "Crisper Drawer",
+    "category": "Refrigerator",
+    "brand": "LG",
+    "price": 69.00,
+    "image_url": "https://via.placeholder.com/240x180?text=Crisper+Drawer",
+    "part_select_url": "https://www.partselect.com/PS8729445",
+    "compatible_models": ["LFXS28968S", "LMXS30776S"],
+    "install_steps": [
+      "Slide out old drawer",
+      "Transfer humidity slider if present",
+      "Insert new drawer on rails"
+    ]
+  },
+  {
+    "part_id": "PS12590573",
+    "title": "Lower Spray Arm",
+    "category": "Dishwasher",
+    "brand": "Bosch",
+    "price": 44.50,
+    "image_url": "https://via.placeholder.com/240x180?text=Spray+Arm",
+    "part_select_url": "https://www.partselect.com/PS12590573",
+    "compatible_models": ["SHEM3AY55N", "SHXM4AY55N"],
+    "install_steps": [
+      "Turn off power",
+      "Lift out lower rack",
+      "Twist old spray arm counter-clockwise to remove",
+      "Install new arm and lock in place"
+    ]
+  },
+  {
+    "part_id": "PS11757388",
+    "title": "Pump & Motor Assembly",
+    "category": "Dishwasher",
+    "brand": "Whirlpool",
+    "price": 169.00,
+    "image_url": "https://via.placeholder.com/240x180?text=Pump+%26+Motor",
+    "part_select_url": "https://www.partselect.com/PS11757388",
+    "compatible_models": ["WDT780SAEM1", "WDF520PADM7"],
+    "install_steps": [
+      "Turn off power and water",
+      "Remove toe kick and disconnect hoses",
+      "Drop old pump assembly by twisting lock ring",
+      "Install new assembly and reconnect"
+    ]
+  },
+  {
+    "part_id": "PS8260087",
+    "title": "Heating Element",
+    "category": "Dishwasher",
+    "brand": "KitchenAid",
+    "price": 59.99,
+    "image_url": "https://via.placeholder.com/240x180?text=Heating+Element",
+    "part_select_url": "https://www.partselect.com/PS8260087",
+    "compatible_models": ["KUDS30IXSS", "KDTE104ESS"],
+    "install_steps": [
+      "Disconnect power",
+      "Access element terminals under tub",
+      "Remove retaining nuts and element",
+      "Install new element and reseal terminals"
+    ]
+  },
+  {
+    "part_id": "PS2366565",
+    "title": "Door Latch Assembly",
+    "category": "Dishwasher",
+    "brand": "GE",
+    "price": 34.95,
+    "image_url": "https://via.placeholder.com/240x180?text=Door+Latch",
+    "part_select_url": "https://www.partselect.com/PS2366565",
+    "compatible_models": ["GDT655SMJES", "GDF520PGJ2BB"],
+    "install_steps": [
+      "Turn off power",
+      "Remove inner door panel screws",
+      "Swap latch assembly and reconnect harness",
+      "Reassemble door and test closing"
+    ]
+  },
+  {
+    "part_id": "PS11746247",
+    "title": "Detergent Dispenser",
+    "category": "Dishwasher",
+    "brand": "Maytag",
+    "price": 48.75,
+    "image_url": "https://via.placeholder.com/240x180?text=Dispenser",
+    "part_select_url": "https://www.partselect.com/PS11746247",
+    "compatible_models": ["MDB4949SHZ", "MDB8959SKZ"],
+    "install_steps": [
+      "Shut off power",
+      "Open door and remove inner panel screws",
+      "Release dispenser tabs and remove",
+      "Insert new dispenser and secure screws"
+    ]
   }
 ]

@@ -1,0 +1,208 @@
+[
+  {
+    "orderId": "ORD0001",
+    "email": "ivan@example.com",
+    "status": "Delivered",
+    "orderDate": "2025-05-26",
+    "items": [
+      {
+        "partId": "P1001",
+        "title": "Oven Compact",
+        "quantity": 1,
+        "price": 499.99,
+        "createdDate": "2025-05-20"
+      },
+      {
+        "partId": "P1002",
+        "title": "Oven Supreme",
+        "quantity": 1,
+        "price": 799.99,
+        "createdDate": "2025-05-20"
+      }
+    ]
+  },
+  {
+    "orderId": "ORD0002",
+    "email": "bob@example.com",
+    "status": "Delivered",
+    "orderDate": "2025-07-17",
+    "items": [
+      {
+        "partId": "P2001",
+        "title": "Washing Machine Turbo",
+        "quantity": 1,
+        "price": 699.99,
+        "createdDate": "2025-07-10"
+      }
+    ]
+  },
+  {
+    "orderId": "ORD0003",
+    "email": "frank@example.com",
+    "status": "Delivered",
+    "orderDate": "2025-06-10",
+    "items": [
+      {
+        "partId": "P3002",
+        "title": "Dishwasher Model B",
+        "quantity": 1,
+        "price": 649.99,
+        "createdDate": "2025-06-05"
+      }
+    ]
+  },
+  {
+    "orderId": "ORD0004",
+    "email": "grace@example.com",
+    "status": "Delivered",
+    "orderDate": "2025-06-08",
+    "items": [
+      {
+        "partId": "P1002",
+        "title": "Oven Supreme",
+        "quantity": 1,
+        "price": 799.99,
+        "createdDate": "2025-06-01"
+      },
+      {
+        "partId": "P3002",
+        "title": "Dishwasher Model B",
+        "quantity": 1,
+        "price": 649.99,
+        "createdDate": "2025-06-01"
+      }
+    ]
+  },
+  {
+    "orderId": "ORD0005",
+    "email": "eve@example.com",
+    "status": "Delivered",
+    "orderDate": "2025-05-25",
+    "items": [
+      {
+        "partId": "P1002",
+        "title": "Oven Supreme",
+        "quantity": 1,
+        "price": 799.99,
+        "createdDate": "2025-05-18"
+      }
+    ]
+  },
+  {
+    "orderId": "ORD0006",
+    "email": "alice@example.com",
+    "status": "Cancelled",
+    "orderDate": "2025-07-19",
+    "items": [
+      {
+        "partId": "P4001",
+        "title": "Dryer QuickDry",
+        "quantity": 1,
+        "price": 549.99,
+        "createdDate": "2025-07-12"
+      },
+      {
+        "partId": "P5001",
+        "title": "Refrigerator Model X",
+        "quantity": 1,
+        "price": 1199.99,
+        "createdDate": "2025-07-12"
+      },
+      {
+        "partId": "P3002",
+        "title": "Dishwasher Model B",
+        "quantity": 1,
+        "price": 649.99,
+        "createdDate": "2025-07-12"
+      }
+    ]
+  },
+  {
+    "orderId": "ORD0007",
+    "email": "alice@example.com",
+    "status": "Delivered",
+    "orderDate": "2025-05-28",
+    "items": [
+      {
+        "partId": "P3001",
+        "title": "Dishwasher Model A",
+        "quantity": 1,
+        "price": 599.99,
+        "createdDate": "2025-05-22"
+      },
+      {
+        "partId": "P2001",
+        "title": "Washing Machine Turbo",
+        "quantity": 1,
+        "price": 699.99,
+        "createdDate": "2025-05-22"
+      }
+    ]
+  },
+  {
+    "orderId": "ORD0008",
+    "email": "david@example.com",
+    "status": "Processing",
+    "orderDate": "2025-05-26",
+    "items": [
+      {
+        "partId": "P1001",
+        "title": "Oven Compact",
+        "quantity": 1,
+        "price": 499.99,
+        "createdDate": "2025-05-23"
+      },
+      {
+        "partId": "P5001",
+        "title": "Refrigerator Model X",
+        "quantity": 1,
+        "price": 1199.99,
+        "createdDate": "2025-05-23"
+      }
+    ]
+  },
+  {
+    "orderId": "ORD0009",
+    "email": "grace@example.com",
+    "status": "Shipped",
+    "orderDate": "2025-06-21",
+    "items": [
+      {
+        "partId": "P1002",
+        "title": "Oven Supreme",
+        "quantity": 1,
+        "price": 799.99,
+        "createdDate": "2025-06-15"
+      },
+      {
+        "partId": "P5001",
+        "title": "Refrigerator Model X",
+        "quantity": 1,
+        "price": 1199.99,
+        "createdDate": "2025-06-15"
+      },
+      {
+        "partId": "P1001",
+        "title": "Oven Compact",
+        "quantity": 1,
+        "price": 499.99,
+        "createdDate": "2025-06-15"
+      }
+    ]
+  },
+  {
+    "orderId": "ORD0010",
+    "email": "ivan@example.com",
+    "status": "Processing",
+    "orderDate": "2025-07-20",
+    "items": [
+      {
+        "partId": "P3001",
+        "title": "Dishwasher Model A",
+        "quantity": 1,
+        "price": 599.99,
+        "createdDate": "2025-07-15"
+      }
+    ]
+  }
+]
