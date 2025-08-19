@@ -6,12 +6,13 @@ export default function FloatingChat() {
   const [open, setOpen] = useState(false);
   const [minimized, setMinimized] = useState(false);
   const [unread, setUnread] = useState(0);
-
+  const [chatKey, setChatKey] = useState(0);
   const handleAssistant = () => {
     if (!open || minimized) setUnread((u) => u + 1);
   };
 
   const endChat = () => {
+    setChatKey((k) => k + 1);
     setOpen(false);
     setMinimized(false);
     setUnread(0);
@@ -35,7 +36,6 @@ export default function FloatingChat() {
           {unread > 0 && <span className="ps-badge">{unread}</span>}
         </button>
       )}
-
 
       <div
         className={`ps-panel ${open ? "open" : ""} ${minimized ? "is-min" : ""}`}
@@ -65,8 +65,8 @@ export default function FloatingChat() {
         </div>
 
         <div className="ps-body">
-    <ChatWindow />
-  </div>
+          <ChatWindow key={chatKey} />
+        </div>
       </div>
     </>
   );
