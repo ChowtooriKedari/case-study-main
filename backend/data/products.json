@@ -1,0 +1,36 @@
+[
+  {
+    "part_id": "PS11752778",
+    "title": "Door Gasket for Whirlpool Refrigerator",
+    "category": "Refrigerator",
+    "brand": "Whirlpool",
+    "price": 89.99,
+    "image_url": "https://via.placeholder.com/240x180?text=Door+Gasket",
+    "part_select_url": "https://www.partselect.com/PS11752778",
+    "compatible_models": ["WRX735SDBM00", "WRS325SDHZ08"],
+    "install_steps": [
+      "Disconnect power at the breaker",
+      "Pull the old gasket from the channel",
+      "Warm the new gasket to improve flexibility",
+      "Press the new gasket into the channel starting from the corners",
+      "Close the door and check the seal"
+    ]
+  },
+  {
+    "part_id": "PS12345678",
+    "title": "Upper Rack Wheel Kit for Whirlpool Dishwasher",
+    "category": "Dishwasher",
+    "brand": "Whirlpool",
+    "price": 24.99,
+    "image_url": "https://via.placeholder.com/240x180?text=Rack+Wheel",
+    "part_select_url": "https://www.partselect.com/PS12345678",
+    "compatible_models": ["WDT780SAEM1", "WDF520PADM7"],
+    "install_steps": [
+      "Turn off power",
+      "Pull upper rack out",
+      "Release old wheel clip",
+      "Press new wheel kit in place",
+      "Slide rack in and test movement"
+    ]
+  }
+]

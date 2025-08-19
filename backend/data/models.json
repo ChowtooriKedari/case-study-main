@@ -1,0 +1,4 @@
+[
+  { "model": "WDT780SAEM1", "type": "Dishwasher", "brand": "Whirlpool", "compatible_parts": ["PS12345678"] },
+  { "model": "WRX735SDBM00", "type": "Refrigerator", "brand": "Whirlpool", "compatible_parts": ["PS11752778"] }
+]

@@ -1,0 +1,12 @@
+.brands{ padding:22px 0; }
+.brands-row{
+  max-width:1180px; margin:0 auto; padding:0 16px;
+  display:grid; grid-template-columns:repeat(6,1fr); gap:18px;
+}
+.brand-card{
+  display:flex; align-items:center; justify-content:center;
+  height:62px; border:1px solid var(--ps-border); border-radius:10px;
+  background:#fff; font-weight:700; color:#1f3d3a;
+}
+@media (max-width:900px){ .brands-row{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:560px){ .brands-row{ grid-template-columns:repeat(2,1fr); } }

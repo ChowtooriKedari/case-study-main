@@ -1,0 +1,17 @@
+[
+  {
+    "id": "faq_ice_maker",
+    "appliance": "Refrigerator",
+    "topic": "Ice maker not working",
+    "checks": [
+      "Confirm freezer temperature is near zero fahrenheit",
+      "Check water supply line for kinks or frozen sections",
+      "Inspect inlet valve for debris and operation",
+      "Check ice maker arm position and cycling"
+    ],
+    "safety": [
+      "Disconnect power before any part replacement",
+      "Shut off water supply before working on water lines"
+    ]
+  }
+]
