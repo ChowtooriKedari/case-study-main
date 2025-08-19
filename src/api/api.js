@@ -13,7 +13,7 @@
 
 export const getAIMessage = async (userQuery) => {
   try {
-    const res = await fetch("http://localhost:8787/api/chat", {
+    const res = await fetch("https://case-study-main.onrender.com/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userQuery })
