@@ -4,65 +4,71 @@ import { getAIMessage } from "../api/api";
 import { marked } from "marked";
 
 function ChatWindow() {
-  const defaultMessage = [
-    { role: "assistant", content: "Hi, how can I help you today?" }
-  ];
+  const defaultMessage = [{ role: "assistant", content: "Hi, how can I help you today?" }];
 
-  const [messages, setMessages] = useState(defaultMessage);
-  const [input, setInput] = useState("");
+  const [messages, setMessages] = useState(defaultMessage);   // no localStorage
+  const [input, setInput] = useState("");                     // no localStorage
+  const [loading, setLoading] = useState(false);
 
   const messagesEndRef = useRef(null);
 
-  const scrollToBottom = () => {
+  useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  }, [messages, loading]);
 
   const handleSend = async () => {
     const text = String(input ?? "").trim();
-    if (!text) return;
+    if (!text || loading) return;
 
     setMessages(prev => [...prev, { role: "user", content: text }]);
     setInput("");
+    setLoading(true);
 
     try {
       const newMessage = await getAIMessage(text);
       setMessages(prev => [...prev, newMessage]);
-    } catch (e) {
-      setMessages(prev => [
-        ...prev,
-        { role: "assistant", content: "Sorry, something went wrong." }
-      ]);
+    } catch {
+      setMessages(prev => [...prev, { role: "assistant", content: "Sorry, something went wrong." }]);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="messages-container">
-      {messages.map((message, index) => (
-        <div key={index} className={`${message.role}-message-container`}>
-          {message.content && (
-            <div className={`message ${message.role}-message`}>
+    <div className="messages-container" aria-live="polite">
+      {messages.map((m, i) => (
+        <div key={i} className={`${m.role}-message-container`}>
+          {m.content && (
+            <div className={`message ${m.role}-message`}>
               <div
                 dangerouslySetInnerHTML={{
-                  __html: marked(message.content).replace(/<p>|<\/p>/g, "")
+                  __html: marked(m.content).replace(/<p>|<\/p>/g, "")
                 }}
               />
             </div>
           )}
         </div>
       ))}
+
+      {loading && (
+        <div className="assistant-message-container">
+          <div className="message assistant-message skeleton">
+            <div className="s-rows"><span className="s-row"/><span className="s-row short"/></div>
+          </div>
+        </div>
+      )}
+
       <div ref={messagesEndRef} />
+
       <div className="input-area">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type a message..."
+          disabled={loading}
           onKeyDown={(e) => {
             if (e.key === "Enter" && !e.shiftKey) {
               e.preventDefault();
@@ -70,7 +76,7 @@ function ChatWindow() {
             }
           }}
         />
-        <button className="send-button" onClick={handleSend}>
+        <button className="send-button" onClick={handleSend} disabled={loading}>
           Send
         </button>
       </div>

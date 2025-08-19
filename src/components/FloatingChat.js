@@ -64,11 +64,9 @@ export default function FloatingChat() {
           </div>
         </div>
 
-        {open && !minimized && (
-          <div className="ps-body">
-            <ChatWindow onAssistant={handleAssistant} />
-          </div>
-        )}
+        <div className="ps-body">
+    <ChatWindow />
+  </div>
       </div>
     </>
   );

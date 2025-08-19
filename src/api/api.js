@@ -1,16 +1,3 @@
-
-// export const getAIMessage = async (userQuery) => {
-
-//   const message = 
-//     {
-//       role: "assistant",
-//       content: "Connect your backend here...."
-//     }
-
-//   return message;
-// };
-
-
 export const getAIMessage = async (userQuery) => {
   try {
     const res = await fetch("https://case-study-main.onrender.com/api/chat", {
