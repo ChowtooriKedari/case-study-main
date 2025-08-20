@@ -1,10 +1,8 @@
-const API_BASE = "http://localhost:8787";
-
+const API_BASE = "https://case-study-main.onrender.com";
 
 export async function getAIMessage(userText, mode) {
-  // Abort if backend stalls
   const controller = new AbortController();
-  const t = setTimeout(() => controller.abort(), 25_000); // 25s
+  const t = setTimeout(() => controller.abort(), 25_000); 
 
   let res;
   try {
@@ -21,13 +19,11 @@ export async function getAIMessage(userText, mode) {
     clearTimeout(t);
   }
 
-  // Throw nice errors
   if (!res.ok) {
     const txt = await res.text().catch(() => "");
     throw new Error(txt || `Backend error (${res.status})`);
   }
 
-  // Normalize so the UI can rely on these keys
   const data = await res.json();
   return {
     answer: data?.answer ?? "",
