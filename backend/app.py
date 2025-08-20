@@ -91,7 +91,6 @@ The UI sends a mode. Follow these rules strictly:
 - mode=catalog       → You may ONLY handle product search/browse.
 - mode=orders        → You may ONLY handle order history/status for a given email (or ask for email).
 - mode=issues        → You may ONLY handle installation steps, compatibility checks, and troubleshooting.
-- mode=other         → You may answer ONLY topics about refrigerators and dishwashers; refuse everything else.
 
 If the user asks for something outside the current mode, briefly refuse and ask a question that guides them back within the mode.
 """
@@ -126,9 +125,7 @@ def allowed_intents_for_mode(mode: str) -> set[str]:
   if mode == "catalog": return {"search_products"}
   if mode == "orders":  return {"order_history"}
   if mode == "issues":  return {"none"}
-  if mode == "other":   return {"none"}
   return {"none"}
-
 
 
 def tool_search_products(query: str, limit: int = 10):
@@ -142,11 +139,9 @@ def tool_search_products(query: str, limit: int = 10):
     return results[:limit]
 
 
-
 def tool_order_history_by_email(email: str, limit: int = 10):
     results = [o for o in ORDERS if o["email"].lower() == email.lower()]
     return results[:limit]
-
 
 
 def scope_check(text: str, mode: Optional[str] = None) -> bool:
@@ -198,9 +193,6 @@ def _norm_order(o: dict) -> dict:
     }
 
 
-
-
-
 PART_RE = re.compile(r"\bps\d{6,}\b", re.I)
 MODEL_RE = re.compile(r"\b[a-z0-9]{3,}[-]?[a-z0-9]+\b", re.I)
 
@@ -234,7 +226,32 @@ def email_like(text: str) -> str | None:
     match = re.search(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}", text)
     return match.group(0) if match else None
 
+def order_id_like(text):
+    # matches ORD followed by digits, e.g. ORD0009
+    match = re.search(r"\bORD\d+\b", text, re.IGNORECASE)
+    return match.group(0) if match else None
 
+def get_orders_by_id(oid: str):
+    """Return a list with the single normalized order for a given order id (or empty list)."""
+    if not oid:
+        return []
+    oid_up = oid.upper()
+    hits = []
+    for o in ORDERS:
+        oid_match = (o.get("order_id") or o.get("orderId") or "").upper()
+        if oid_match == oid_up:
+            hits.append(_norm_order(o))
+    return hits  # 0 or 1 in your demo
+def _order_total(o_norm: dict) -> float:
+    total = 0.0
+    for it in o_norm.get("items", []):
+        try:
+            qty = float(it.get("qty", 0))
+            price = float(it.get("price", 0))
+            total += qty * price
+        except Exception:
+            continue
+    return round(total, 2)
 
 @app.post("/api/chat")
 async def chat(body: ChatIn):
@@ -248,29 +265,88 @@ async def chat(body: ChatIn):
             "products": [], "orders": [], "references": []
         }
 
-
     if mode == "orders":
+        oid = order_id_like(user_text)
         em = email_like(user_text)
+
+        # --- A) Order by ID (deterministic, no LLM) ---
+        if oid:
+            orders = get_orders_by_id(oid)
+            if orders:
+                o = orders[0]
+                # build a readable summary + itemized list
+                lines = [
+                    f"**Order {o['order_id']}**",
+                    f"Status: **{o['status']}**",
+                    f"Placed: {o['created_at']}",
+                ]
+                if o.get("email"):
+                    lines.append(f"Email: {o['email']}")
+                if o.get("items"):
+                    lines.append("\n**Items:**")
+                    for it in o["items"]:
+                        qty = it.get("qty", 1)
+                        title = it.get("title", "Item")
+                        pid = it.get("part_id")
+                        price = it.get("price")
+                        part_str = f" (Part {pid})" if pid else ""
+                        price_str = f" — ${price:.2f}" if isinstance(price, (int, float)) else ""
+                        lines.append(f"- {title}{part_str} ×{qty}{price_str}")
+                    total = _order_total(o)
+                    if total > 0:
+                        lines.append(f"\n**Order total:** ${total:.2f}")
+
+                return {
+                    "answer": "\n".join(lines),
+                    "follow_up": [
+                        "Track this shipment",
+                        "See all my orders (by email)",
+                        "Help with a return"
+                    ],
+                    "products": [],
+                    "orders": orders,   # normalized, so UI can render
+                    "references": ["tool:order_by_id"]
+                }
+            else:
+                return {
+                    "answer": f"Sorry, I couldn't find any details for order **{oid}**. "
+                            f"If you have the email used for the order, I can pull the full history.",
+                    "follow_up": ["Look up by email", "Try another order ID"],
+                    "products": [], "orders": [], "references": []
+                }
+
+        # --- B) Order history by email (your existing fast path) ---
         if em:
             hits = [o for o in ORDERS if (o.get("email","").lower() == em.lower())]
+            # newest first
             hits.sort(key=lambda x: x.get("created_at") or x.get("orderDate") or "", reverse=True)
             norm = [_norm_order(o) for o in hits[:20]]
+
             if not norm:
                 return {
                     "answer": f"I couldn’t find orders for **{em}**. If you used a different email, share that one.",
                     "follow_up": ["Try another email", "Ask about order status policies"],
                     "products": [], "orders": [], "references": []
                 }
+
             lines = [f"Here’s your recent order history for **{em}**:"]
             for o in norm[:5]:
                 lines.append(f"- **{o['order_id']}** • {o['status']} • {o['created_at']} • {len(o['items'])} item(s)")
+
             return {
                 "answer": "\n".join(lines),
                 "follow_up": ["Show details for a specific order ID", "Track a shipment"],
                 "products": [],
-                "orders": norm, 
+                "orders": norm,
                 "references": ["tool:order_history_by_email"]
             }
+
+        # --- C) Neither email nor order id provided ---
+        return {
+            "answer": "To look up your orders, share either your **email** (used at checkout) or an **Order ID** like `ORD0009`.",
+            "follow_up": ["Look up by email", "Look up by order ID"],
+            "products": [], "orders": [], "references": []
+        }
 
     part_ids = extract_part_ids(user_text)
     model_ids = extract_model_ids(user_text)
@@ -278,7 +354,6 @@ async def chat(body: ChatIn):
         p = get_product_by_part_id(part_ids[0])
         if p:
             out_lines = [f"**{p['title']}** ({p['part_id']}) — {p.get('brand','')} {p.get('category','')}"]
-
             if is_install_like(user_text) and p.get("install_steps"):
                 out_lines.append("**Install steps:**")
                 for i, step in enumerate(p["install_steps"], 1):
@@ -377,6 +452,6 @@ async def chat(body: ChatIn):
     parsed["references"] = sorted(refs)
     parsed.setdefault("products", [])
     parsed.setdefault("orders", [])
-    parsed.setdefault("follow_up", [])
+    # parsed.setdefault("follow_up", [])
 
     return parsed
