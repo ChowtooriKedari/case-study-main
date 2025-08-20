@@ -1,0 +1,62 @@
+[
+  {
+    "id": "faq_ice_maker",
+    "appliance": "Refrigerator",
+    "topic": "Ice maker not working",
+    "checks": [
+      "Confirm freezer temperature is near zero fahrenheit",
+      "Check water supply line for kinks or frozen sections",
+      "Inspect inlet valve for debris and operation",
+      "Check ice maker arm position and cycling"
+    ],
+    "safety": [
+      "Disconnect power before any part replacement",
+      "Shut off water supply before working on water lines"
+    ]
+  },
+  {
+    "id": "faq_delivery_time",
+    "topic": "Order delivery time",
+    "details": [
+      "Most orders are delivered within 3-7 business days.",
+      "Express shipping options are available at checkout.",
+      "Delivery times may vary depending on location and product availability."
+    ]
+  },
+  {
+    "id": "faq_returns",
+    "topic": "Returns",
+    "details": [
+      "Items can be returned within 30 days of delivery.",
+      "Products must be unused and in original packaging.",
+      "Refunds are issued to the original payment method after inspection."
+    ]
+  },
+  {
+    "id": "faq_exchanges",
+    "topic": "Exchanges",
+    "details": [
+      "Exchanges are available for items of equal or lesser value.",
+      "If the replacement item is more expensive, the price difference will be charged.",
+      "Contact customer support to initiate an exchange request."
+    ]
+  },
+  {
+    "id": "faq_repairs",
+    "topic": "Repairs",
+    "details": [
+      "We provide repair services for appliances under warranty.",
+      "Out-of-warranty repairs can be scheduled for a service fee.",
+      "Contact support to book a repair appointment with a certified technician."
+    ]
+  },
+  {
+    "id": "faq_contact",
+    "topic": "Contact information",
+    "details": [
+      "Customer support is available via email at support@example.com.",
+      "You can reach us by phone at (123) 456-7890 between 9 AM - 6 PM EST.",
+      "Live chat support is available on our website during business hours."
+    ]
+  }
+]
